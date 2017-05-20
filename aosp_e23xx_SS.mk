@@ -1,4 +1,5 @@
 # Copyright 2014 The Android Open Source Project
+# Copyright (C) 2017 Pavel Dubrova (Bart. Cubbins) <paveldubrova@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,7 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_e2303.mk \
-                     $(LOCAL_DIR)/aosp_e2333.mk \
-                     $(LOCAL_DIR)/aosp_e23xx_DS.mk \
-                     $(LOCAL_DIR)/aosp_e23xx_SS.mk
+TARGET_KERNEL_CONFIG := aosp_kanuti_tulip_defconfig
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, device/sony/tulip/device.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+PRODUCT_NAME := aosp_e23xx_SS
+PRODUCT_DEVICE := tulip
+PRODUCT_MODEL := Xperia M4 Aqua (AOSP)
+PRODUCT_BRAND := Sony
+PRODUCT_MANUFACTURER := Sony
