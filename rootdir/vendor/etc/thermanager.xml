@@ -122,7 +122,6 @@
 
 	<!-- cluster1 -->
 	<configuration sensor="cluster-1-temp">
-		<configuration sensor="cluster-0-temp">
 		<threshold>
 			<mitigation name="cluster-0-clk" level="off" />
 		</threshold>
