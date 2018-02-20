@@ -12,7 +12,7 @@
 # limitations under the License.
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/sony/tulip/aosp_e2303.mk)
+$(call inherit-product, device/sony/tulip/aosp_go_e2303.mk)
 
 # Reserve space for data encryption (12213813248-16384)
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12213796864
