@@ -13,4 +13,6 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_e2303.mk \
-                     $(LOCAL_DIR)/aosp_e2333.mk
+                     $(LOCAL_DIR)/aosp_e2333.mk \
+					 $(LOCAL_DIR)/aosp_go_e2303.mk \
+					 $(LOCAL_DIR)/aosp_go_e2333.mk
