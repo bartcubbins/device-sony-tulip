@@ -12,7 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_e2303.mk \
-                     $(LOCAL_DIR)/aosp_e2333.mk \
-                     $(LOCAL_DIR)/aosp_go_e2303.mk \
-                     $(LOCAL_DIR)/aosp_go_e2333.mk
+TARGET_KERNEL_CONFIG := aosp_kanuti_tulip_defconfig
+
+# Inherit from those products. Most specific first.
+$(call inherit-product, device/sony/tulip/device.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# Inherit common Android Go configurations
+$(call inherit-product, build/target/product/go_defaults.mk)
+
+PRODUCT_NAME := aosp_e2303
+PRODUCT_DEVICE := tulip
+PRODUCT_MODEL := Xperia M4 Aqua (AOSP Go)
+PRODUCT_BRAND := Sony
+PRODUCT_MANUFACTURER := Sony

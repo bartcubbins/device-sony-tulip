@@ -12,7 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/aosp_e2303.mk \
-                     $(LOCAL_DIR)/aosp_e2333.mk \
-                     $(LOCAL_DIR)/aosp_go_e2303.mk \
-                     $(LOCAL_DIR)/aosp_go_e2333.mk
+# Inherit from those products. Most specific first.
+$(call inherit-product, device/sony/tulip/aosp_go_e2303.mk)
+
+# Reserve space for data encryption (12213813248-16384)
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 12213796864
+
+# DualSim
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.multisim.config=dsds \
+    persist.radio.multisim.config=dsds \
+    ro.telephony.default_network=9,1
+
+PRODUCT_NAME := aosp_e2333
+PRODUCT_DEVICE := tulip
+PRODUCT_MODEL := Xperia M4 Aqua Dual (AOSP Go)
+PRODUCT_BRAND := Sony
+PRODUCT_MANUFACTURER := Sony
