@@ -14,7 +14,15 @@
 
 include device/sony/kanuti/PlatformConfig.mk
 
-TARGET_BOOTLOADER_BOARD_NAME := kanuti
+TARGET_BOOTLOADER_BOARD_NAME := unknown
+ifneq (,$(filter %e2303,$(TARGET_PRODUCT)))
+TARGET_BOOTLOADER_BOARD_NAME := E2303
+else ifneq (,$(filter %e2333,$(TARGET_PRODUCT)))
+TARGET_BOOTLOADER_BOARD_NAME := E2333
+else
+TARGET_BOOTLOADER_BOARD_NAME := E2303
+$(warning Unrecognized value for TARGET_PRODUCT: "$(TARGET_PRODUCT)", using default value: "$(TARGET_BOOTLOADER_BOARD_NAME)")
+endif
 
 # Platform
 PRODUCT_PLATFORM := kanuti
